@@ -20,7 +20,6 @@
     <title>Мой сайт с Яндекс.Картами</title>
 </head>
 <body>
-    <h1>Добро пожаловать на мой сайт!</h1>
     <div id="map" style="width: 600px; height: 400px;"></div>
     
     <script src="https://api-maps.yandex.ru/2.1/?apikey=47cf05a1-5246-4864-854e-1402a690fbce&lang=ru_RU" type="text/javascript"></script>
@@ -29,7 +28,7 @@
         function init() {
             var myMap = new ymaps.Map("map", {
                 center: [55.751574, 37.573856], // Москва
-                zoom: 10
+                zoom: 10 
             });
 
             var myPlacemark = new ymaps.Placemark([55.751574, 37.573856], {
@@ -40,5 +39,4 @@
         }
     </script>
 </body>
-<img src="{{ url_for('static', filename='ddddd.png') }}" alt="хуй">
 </html>
