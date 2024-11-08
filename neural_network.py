@@ -10,6 +10,15 @@ def get_picture_names():
     return list_of_names
 
 
+def get_list_of_passengers_count():
+    list_of_passengers_count = []
+    for i in results:
+        list_of_passengers_count.append(len(i))
+    
+    
+    return list_of_passengers_count
+
+
 
 path = os.getcwd()
 
@@ -20,9 +29,4 @@ model = YOLO("yolo11x.pt")
 list_of_picture_names_for_prediction = get_picture_names()
 
 
-results = model.predict(source=list_of_picture_names_for_prediction, save=True, classes=[0], conf=0.3, device="cuda:0", project=path, imgsz=1280)
-
-
-
-for i in results:
-    print(len(i))
+results = model.predict(source=list_of_picture_names_for_prediction, save=False, classes=[0], conf=0.3, device="cuda:0", project=path, imgsz=1280)
