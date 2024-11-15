@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта с загруженностью</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Карта -->
+    <div id="map"></div>
+
+    <!-- Кнопка открытия меню расписания -->
+    <button id="open-schedule-btn">Поиск автобусов</button>
+
+    <!-- Панель загруженности -->
+    <div class="panel" id="load-panel">
+        <div class="panel-header">
+            <span>ЗАГРУЖЕННОСТЬ</span>
+            <button id="close-load-panel">×</button>
+            <button id="back-to-schedule-btn"><</button>
+        </div>
+        <div class="load-panel-content">
+            <p>Загруженность: <span id="day"></span></p>
+            <div id="chart">
+                <div class="bar" data-time="04"></div>
+                <div class="bar" data-time="06"></div>
+                <div class="bar" data-time="08"></div>
+                <div class="bar" data-time="10"></div>
+                <div class="bar" data-time="12"></div>
+                <div class="bar" data-time="14"></div>
+                <div class="bar" data-time="16"></div>
+                <div class="bar" data-time="18"></div>
+                <div class="bar" data-time="20"></div>
+                <div class="bar" data-time="22"></div>
+                <div class="bar" data-time="00"></div>
+            </div>
+            <div id="times">
+                <span>04</span><span>06</span><span>08</span><span>10</span><span>12</span><span>14</span>
+                <span>16</span><span>18</span><span>20</span><span>22</span><span>00</span>
+            </div>
+            <div id="days">
+                <!-- Кнопки для переключения дней -->
+                <span class="day-btn" data-day="понедельник">Пн</span>
+                <span class="day-btn" data-day="вторник">Вт</span>
+                <span class="day-btn" data-day="среда">Ср</span>
+                <span class="day-btn" data-day="четверг">Чт</span>
+                <span class="day-btn" data-day="пятница">Пт</span>
+                <span class="day-btn" data-day="суббота">Сб</span>
+                <span class="day-btn" data-day="воскресенье">Вс</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Панель расписания -->
+    <div class="panel" id="schedule-panel">
+        <div class="panel-header">
+            <span>САДЫ</span>
+            <button id="close-schedule-panel">×</button>
+        </div>
+        <div class="panel-content">
+            <div class="schedule-item">
+                <span>№70</span>
+                <div class="people-icon" id="open-load-panel"></div>
+            </div>
+            <div class="schedule-item">
+                <span>№24</span>
+                <div class="people-icon" id="open-load-panel"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="script.js"></script>
+</body>
+</html>
