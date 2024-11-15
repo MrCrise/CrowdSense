@@ -69,16 +69,23 @@ button {
     margin-top: 20px;
 }
 
+.schedule-panel-content {
+    margin-top: 20px;
+}
+
 #close-schedule-panel,
 #close-load-panel {
     background: none;
     color: #fff;
+    /* background-color: #777; */
+    padding: 5px 10px;
+    text-align: center;
     font-size: 24px;
     border: none;
     cursor: pointer;
     position: absolute;
     right: 10px; /* Расположение справа */
-    top: 5px;   /* Расположение сверху */
+    top: 10px;   /* Расположение сверху */
 }
 
 /* Стили для графика загруженности */
@@ -169,6 +176,7 @@ button {
     border: none;
     border-radius: 2px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .people-icon {
