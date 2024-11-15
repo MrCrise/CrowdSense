@@ -125,12 +125,20 @@ button {
 }
 
 .day-btn {
+    background-color: #464646;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
     font-size: 14px;
     color: #aaa;
     cursor: pointer;
 }
 
 .day-btn.active-day {
+    background-color: #007bff;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
     color: #fff;
     font-weight: bold;
 }
