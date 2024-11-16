@@ -7,14 +7,17 @@ def get_bus_data():
     return bus_data_list
 
 
-def fullness_calc(seating, capacity, passengers):
-    if 0 <= passengers < seating:
+def fullness_calc(capacity, number_of_passengers):
+    fraction = number_of_passengers / capacity
+
+
+    if fraction < 0.2:
         return 1
-    if seating <= passengers < seating + ((capacity - seating) // 2):
+    elif 0.2 <= fraction <= 0.35:
         return 2
-    if seating + ((capacity - seating) // 2) <= passengers <= capacity - 1:
+    elif 0.35 <= fraction <= 0.5:
         return 3
-    if passengers > capacity - 1:
+    else:
         return 4
 
 
@@ -36,6 +39,6 @@ merged_bus_data_and_passengers_count_list = bus_data_and_passengers_count_merge(
 
 fullness_list = []
 for i in merged_bus_data_and_passengers_count_list:
-    current_fullnes = fullness_calc(i[0], i[1], i[2])
+    current_fullnes = fullness_calc(i[1], i[2])
     fullness_list.append(current_fullnes)
 print(fullness_list)

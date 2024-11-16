@@ -77,7 +77,7 @@ DG.then(function () {
             button.classList.add('active-day');
             // Обновляем загруженность и отображаем выбранный день
             const selectedDay = button.getAttribute('data-day').toLowerCase();
-            document.getElementById('day').textContent = selectedDay;
+            document.getElementById('day').textContent = "";
             updateChart(selectedDay);
         });
     });
@@ -128,7 +128,7 @@ DG.then(function () {
         const currentWeekDay = weekDays[currentDate.getDay()];
         if (button.getAttribute('data-day').toLowerCase() === currentWeekDay) {
             button.classList.add('active-day');
-            document.getElementById('day').textContent = currentWeekDay;
+            document.getElementById('day').textContent = "";
             updateChart(currentWeekDay);
         }
     });
