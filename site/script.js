@@ -94,8 +94,8 @@ DG.then(function () {
     }
 
     dayButtons.forEach(button => {
-        const currentDate = new Date()
-        const currentWeekDay = weekDays[currentDate.getDay()]
+        const currentDate = new Date();
+        const currentWeekDay = weekDays[currentDate.getDay()];
         if (button.getAttribute('data-day').toLowerCase() === currentWeekDay) {
             button.classList.add('active-day');
             document.getElementById('day').textContent = currentWeekDay;

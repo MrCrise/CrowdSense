@@ -27,7 +27,7 @@ async def command_start_handler(message: Message) -> None:
                [
                     KeyboardButton(
                          text = "Открыть",
-                         web_app = WebAppInfo(url = f"https://sajt-dasdada.amvera.io/")
+                         web_app = WebAppInfo(url = f"https://mrcrise.github.io/")
                     )
                ]
           ],
