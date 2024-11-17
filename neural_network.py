@@ -3,8 +3,8 @@ import os
 
 
 def get_picture_names():
-    names_file = open("pictures for test/picture_names.txt")
-    list_of_names = ["pictures for test\\" + i.strip() for i in names_file]
+    names_file = open("фото автобусов/photo_names.txt", encoding="utf-8")
+    list_of_names = ["фото автобусов\\" + i.strip() for i in names_file]
 
 
     return list_of_names
