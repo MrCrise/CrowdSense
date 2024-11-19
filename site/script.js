@@ -131,6 +131,7 @@ DG.then(function () {
     
         bars.forEach((bar, index) => {
             bar.style.height = `${data[index]}%`; // Устанавливаем высоту каждого столбца
+            bar.title = `${data[index]}%`;
         });
     }
     
@@ -153,7 +154,7 @@ DG.then(function () {
     });
 
     function getBusRoute(routeNumber, source, target) {
-        const apiKey = "cabd8eda-e8c3-45cf-b75f-70b5ef941ff3"; // API ключ
+        const apiKey = "9b2a670a-6312-4ab4-a709-d2594acd146f" // "cabd8eda-e8c3-45cf-b75f-70b5ef941ff3"; // API ключ
         const apiUrl = `https://routing.api.2gis.com/public_transport/2.0?key=${apiKey}`;
     
         fetch(apiUrl, {
