@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карта с загруженностью</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем CSS из static -->
+    <link rel="stylesheet" href="/static/site/style.css">
 </head>
 <body>
 
@@ -19,7 +20,7 @@
         <div class="panel-header">
             <span>ЗАГРУЖЕННОСТЬ</span>
             <button id="close-load-panel">×</button>
-            <button id="back-to-schedule-btn"><</button>
+            <button id="back-to-schedule-btn"></button>
         </div>
         <div class="load-panel-content">
             <p><span id="day"></span></p>
@@ -61,17 +62,14 @@
         </div>
         <div class="schedule-panel-content">
             <div class="schedule-item">
-                <div class="bus-number" id="show-bus-route-70">№70</div>
-                <div class="people-icon" id="open-load-panel" value="70"></div>
-            </div>
-            <div class="schedule-item">
-                <div class="bus-number" id="show-bus-route-50">№50</div>
-                <div class="people-icon" id="open-load-panel" value="50"></div>
+                <div class="bus-number" id="show-bus-route-37">№37</div>
+                <div class="people-icon" id="open-load-panel" value="37"></div>
             </div>
         </div>
     </div>
 
+    <!-- Подключаем JS из static -->
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
-    <script src="script.js"></script>
+    <script src="/static/site/script.js"></script>
 </body>
 </html>
