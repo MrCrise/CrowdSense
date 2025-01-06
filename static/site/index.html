@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карта с загруженностью</title>
-    <!-- Подключаем CSS из static -->
+    <!-- Link to external CSS stylesheet -->
     <link rel="stylesheet" href="/static/site/style.css">
 </head>
+
 <body>
 
-    <!-- Карта -->
+    <!-- Map container -->
     <div id="map"></div>
 
-    <!-- Кнопка открытия меню расписания -->
+    <!-- Button to open schedule menu -->
     <button id="open-schedule-btn">Поиск автобусов</button>
 
-    <!-- Панель загруженности -->
+    <!-- Load panel for showing bus occupancy -->
     <div class="panel" id="load-panel">
         <div class="panel-header">
+            <!-- Header with panel title and close buttons -->
             <span>ЗАГРУЖЕННОСТЬ</span>
             <button id="close-load-panel">×</button>
             <button id="back-to-schedule-btn"></button>
         </div>
         <div class="load-panel-content">
+            <!-- Day display -->
             <p><span id="day"></span></p>
+            <!-- Bar chart showing occupancy for different times -->
             <div id="chart">
+                <!-- Each div represents a time slot on the chart -->
                 <div class="bar" data-time="04"></div>
                 <div class="bar" data-time="06"></div>
                 <div class="bar" data-time="08"></div>
@@ -37,12 +43,14 @@
                 <div class="bar" data-time="22"></div>
                 <div class="bar" data-time="00"></div>
             </div>
+            <!-- Time labels for the chart -->
             <div id="times">
                 <span>04</span><span>06</span><span>08</span><span>10</span><span>12</span><span>14</span>
                 <span>16</span><span>18</span><span>20</span><span>22</span><span>00</span>
             </div>
+            <!-- Day selection buttons -->
             <div id="days">
-                <!-- Кнопки для переключения дней -->
+                <!-- Buttons for switching between days -->
                 <span class="day-btn" data-day="понедельник">Пн</span>
                 <span class="day-btn" data-day="вторник">Вт</span>
                 <span class="day-btn" data-day="среда">Ср</span>
@@ -54,13 +62,15 @@
         </div>
     </div>
 
-    <!-- Панель расписания -->
+    <!-- Schedule panel for showing bus routes -->
     <div class="panel" id="schedule-panel">
         <div class="panel-header">
+            <!-- Header with panel title and close button -->
             <span>ВЫБЕРИТЕ МАРШРУТ</span>
             <button id="close-schedule-panel">×</button>
         </div>
         <div class="schedule-panel-content">
+            <!-- Schedule item displaying bus route number and occupancy button -->
             <div class="schedule-item">
                 <div class="bus-number" id="show-bus-route-37">№37</div>
                 <div class="people-icon" id="open-load-panel" value="37"></div>
@@ -68,8 +78,11 @@
         </div>
     </div>
 
-    <!-- Подключаем JS из static -->
+    <!-- External JS scripts -->
+    <!-- 2GIS Maps API -->
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <!-- Custom script for site functionality -->
     <script src="/static/site/script.js"></script>
 </body>
+
 </html>
