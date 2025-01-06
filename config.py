@@ -4,7 +4,7 @@ CURRENT_DAY: str = 'понедельник'  # понедельник, втор�
 CURRENT_TIME: str = '10'  # 04, 06, 08, 10, 12, 14, 16, 18, 20, 22, 00.
 
 # Picture path constants.
-PICTURES_PATH: str = 'bus pictures/'
+PICTURES_PATH: str = 'Transport pictures/'
 PICTURE_NAMES_FILE: str = 'photo_names.txt'
 
 # Prediction constants.

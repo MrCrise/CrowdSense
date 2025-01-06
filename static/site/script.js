@@ -10,7 +10,7 @@ DG.then(function () {
     const openScheduleBtn = document.getElementById('open-schedule-btn');
     const openLoadPanelIcons = document.querySelectorAll('#open-load-panel');
     const backToScheduleBtn = document.getElementById('back-to-schedule-btn');
-    const showBusRoute37Btn = document.getElementById('show-bus-route-37');
+    const showTransportRoute37Btn = document.getElementById('show-transport-route-37');
     const weekDays = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     const dayButtons = document.querySelectorAll('.day-btn');
 
@@ -24,9 +24,9 @@ DG.then(function () {
         });
     });
 
-    // Fetch and update the chart with bus load data for the selected day
+    // Fetch and update the chart with transport load data for the selected day
     function updateChart(day) {
-        fetch('/static/site/bus_data/bus_load_data.json')
+        fetch('/static/site/transport_data/transport_load_data.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load data: ${response.status}`);
@@ -63,8 +63,8 @@ DG.then(function () {
     }
 
     // Fetch and display route 37 data on the map
-    showBusRoute37Btn.addEventListener('click', () => {
-        fetch('/static/site/bus_data/37.json')
+    showTransportRoute37Btn.addEventListener('click', () => {
+        fetch('/static/site/transport_data/37.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load data: ${response.status}`);
@@ -83,7 +83,7 @@ DG.then(function () {
             .catch(error => console.error('Data processing error:', error));
     });
 
-    // Render bus routes on the map
+    // Render transport routes on the map
     function displayRouteOnMap(geometryList) {
         geometryList.forEach(geometry => {
             const coordinates = geometry
@@ -106,7 +106,7 @@ DG.then(function () {
         });
     }
 
-    // Render bus stops on the map
+    // Render transport stops on the map
     function placeStopsOnMap(platforms, platformNames) {
         const stopIcon = DG.icon({
             iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -137,7 +137,7 @@ DG.then(function () {
 
 /*
     // Trolleybus route request
-    showBusRoute37Btn.addEventListener('click', () => getTrolleybusRoute37());
+    showTransportRoute37Btn.addEventListener('click', () => getTrolleybusRoute37());
 
     function getTrolleybusRoute37() {
         const apiUrl = `https://routing.api.2gis.com/public_transport/2.0?key=e9a6a37b-245a-4ad2-918e-c4b9cb8ce618`;

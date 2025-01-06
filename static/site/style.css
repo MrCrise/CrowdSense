@@ -166,8 +166,8 @@ button {
     font-size: 18px;
 }
 
-/* Bus number button styles */
-.bus-number {
+/* Transport number button styles */
+.transport-number {
     background-color: #007bff;
     border: none;
     border-radius: 2px;
@@ -185,4 +185,10 @@ button {
     background-color: #007bff;
     border-radius: 2px;
     padding: 15px;
+}
+
+/* Map styles */
+#map {
+    width: 100%;
+    height: 100vh;
 }
