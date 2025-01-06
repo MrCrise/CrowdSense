@@ -2,58 +2,53 @@ import asyncio
 import logging
 import sys
 
-from aiogram import Bot, Dispatcher, html
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
+from aiogram.filters import CommandStart
+from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, \
+                          WebAppInfo
 
-# Bot token can be obtained via https://t.me/BotFather
+# Bot token.
 TOKEN = "8151127954:AAFPMLTgJ20VK-ulxXb3MBzz9H1WyoGxiDA"
 
-# Initialize Dispatcher (Router) for handling incoming updates
+# All handlers should be attached to the Router (or Dispatcher).
+
 dp = Dispatcher()
 
-# For Windows, set event loop policy to avoid issues with asyncio on some platforms
+
 if sys.platform == 'win32':
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 
-# Handler for the "/start" command
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
-    # Create a custom keyboard with a button that opens a web app
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
                 KeyboardButton(
-                    text="Открыть",  # Button label
-                    web_app=WebAppInfo(
-                        url=f"https://mrcrise.github.io/")  # Web app URL
+                    text="Открыть приложение",
+                    web_app=WebAppInfo(url="https://mrcrise.github.io/")
                 )
             ]
         ],
-        resize_keyboard=True  # Resize the keyboard for a cleaner appearance
+        resize_keyboard=True
     )
+    await message.answer("CrowdSense - сервис по отслеживанию загруженности "
+                         "транспорта.\nДля использования сервиса, нажмите на "
+                         "кнопку.", reply_markup=markup)
 
-    # Send a message with the button
-    await message.answer("Нажми на кнопку, чтобы открыть приложение", reply_markup=markup)
 
-
-# Main function to run the bot
 async def main() -> None:
-    # Initialize Bot instance with default properties (HTML parse mode)
+    # Initialize Bot instance with default bot properties which will be passed
+    # to all API calls
     bot = Bot(token=TOKEN, default=DefaultBotProperties(
         parse_mode=ParseMode.HTML))
 
-    # Start polling for updates and dispatch events
+    # And the run events dispatching
     await dp.start_polling(bot)
 
 
-# Entry point of the script
 if __name__ == "__main__":
-    # Set up logging to track bot activity
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
-
-    # Run the bot asynchronously
     asyncio.run(main())
