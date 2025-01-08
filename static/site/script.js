@@ -4,7 +4,7 @@ DG.then(function () {
         zoom: 13
     });
 
-    // References to UI elements for panel interactions
+    // References to UI elements for panel interactions.
     const loadPanel = document.getElementById('load-panel');
     const schedulePanel = document.getElementById('schedule-panel');
     const openScheduleBtn = document.getElementById('open-schedule-btn');
@@ -14,7 +14,7 @@ DG.then(function () {
     const weekDays = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     const dayButtons = document.querySelectorAll('.day-btn');
 
-    // Attach click event listeners to day buttons to update the chart
+    // Attach click event listeners to day buttons to update the chart.
     dayButtons.forEach(button => {
         button.addEventListener('click', () => {
             dayButtons.forEach(btn => btn.classList.remove('active-day'));
@@ -24,7 +24,7 @@ DG.then(function () {
         });
     });
 
-    // Fetch and update the chart with transport load data for the selected day
+    // Fetch and update the chart with transport load data for the selected day.
     function updateChart(day) {
         fetch('/static/site/transport_data/transport_load_data.json')
             .then(response => {
@@ -44,25 +44,25 @@ DG.then(function () {
             .catch(error => console.error('Data processing error:', error));
     }
 
-    // Automatically display chart for the current day of the week
+    // Automatically display chart for the current day of the week.
     const currentDay = weekDays[new Date().getDay()];
     document.querySelector(`[data-day="${currentDay}"]`).classList.add('active-day');
     updateChart(currentDay);
 
-    // Add event listeners to manage panel visibility
+    // Add event listeners to manage panel visibility.
     openScheduleBtn.addEventListener('click', () => { closeAllPanels(); schedulePanel.style.display = 'block'; });
     backToScheduleBtn.addEventListener('click', () => { closeAllPanels(); schedulePanel.style.display = 'block'; });
     openLoadPanelIcons.forEach(icon => icon.addEventListener('click', () => { closeAllPanels(); loadPanel.style.display = 'block'; }));
     document.getElementById('close-load-panel').addEventListener('click', () => loadPanel.style.display = 'none');
     document.getElementById('close-schedule-panel').addEventListener('click', () => schedulePanel.style.display = 'none');
 
-    // Hide all panels
+    // Hide all panels.
     function closeAllPanels() {
         loadPanel.style.display = 'none';
         schedulePanel.style.display = 'none';
     }
 
-    // Fetch and display route 37 data on the map
+    // Fetch and display route 37 data on the map.
     showTransportRoute37Btn.addEventListener('click', () => {
         fetch('/static/site/transport_data/37.json')
             .then(response => {
@@ -83,7 +83,7 @@ DG.then(function () {
             .catch(error => console.error('Data processing error:', error));
     });
 
-    // Render transport routes on the map
+    // Render transport routes on the map.
     function displayRouteOnMap(geometryList) {
         geometryList.forEach(geometry => {
             const coordinates = geometry
@@ -106,7 +106,7 @@ DG.then(function () {
         });
     }
 
-    // Render transport stops on the map
+    // Render transport stops on the map.
     function placeStopsOnMap(platforms, platformNames) {
         const stopIcon = DG.icon({
             iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -125,7 +125,7 @@ DG.then(function () {
         });
     }
 
-    // Remove all layers from the map
+    // Remove all layers from the map.
     function clearMap() {
         map.eachLayer(layer => {
             if (layer instanceof DG.Polyline || layer instanceof DG.Marker) {
