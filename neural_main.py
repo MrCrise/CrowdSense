@@ -5,7 +5,7 @@ from config import CURRENT_TRANSPORT_NUMBER, CURRENT_DAY, CURRENT_TIME
 
 
 # Used as a placeholder if selected transport number has no data.
-DATA_TEMPLATE = {
+DATA_TEMPLATE: dict = {
     'понедельник': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     'вторник': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     'среда': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -16,7 +16,7 @@ DATA_TEMPLATE = {
 }
 
 
-TIME_TO_INDEX = {
+TIME_TO_INDEX: dict = {
     '04': 0,
     '06': 1,
     '08': 2,

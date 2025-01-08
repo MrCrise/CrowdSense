@@ -10,7 +10,7 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, \
                           WebAppInfo
 
 # Bot token.
-TOKEN = "8151127954:AAFPMLTgJ20VK-ulxXb3MBzz9H1WyoGxiDA"
+TOKEN: str = "8151127954:AAFPMLTgJ20VK-ulxXb3MBzz9H1WyoGxiDA"
 
 # All handlers should be attached to the Router (or Dispatcher).
 
