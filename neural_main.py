@@ -49,7 +49,7 @@ def get_average_fullness(fullness_list: list) -> int:
 
 def write_to_json(data):
     """Write average fullness data to json file."""
-    with open('static/site/bus_data/transport_data.json', 'r',
+    with open('static/site/transport_data/transport_load_data.json', 'r',
               encoding='utf-8') as openfile:
         json_data = json.load(openfile)
 
@@ -63,7 +63,7 @@ def write_to_json(data):
         json_data[CURRENT_TRANSPORT_NUMBER][CURRENT_DAY][current_time_index] \
             = data
 
-    with open("static/site/bus_data/transport_data.json", "w",
+    with open("static/site/transport_data/transport_load_data.json", "w",
               encoding='utf-8') as outfile:
         json.dump(json_data, outfile, ensure_ascii=False,
                   sort_keys=True, indent=4)
