@@ -41,11 +41,11 @@ async def command_start_handler(message: Message) -> None:
 
 async def main() -> None:
     # Initialize Bot instance with default bot properties which will be passed
-    # to all API calls
+    # to all API calls.
     bot = Bot(token=TOKEN, default=DefaultBotProperties(
         parse_mode=ParseMode.HTML))
 
-    # And the run events dispatching
+    # Run events dispatching.
     await dp.start_polling(bot)
 
 
