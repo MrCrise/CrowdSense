@@ -48,7 +48,7 @@ def get_average_fullness(fullness_list: list) -> int:
     return avg_fullness
 
 
-def write_to_json(data):
+def write_to_json(data: int) -> None:
     """Write average fullness data to json file."""
     with open('static/site/transport_data/transport_load_data.json', 'r',
               encoding='utf-8') as openfile:
