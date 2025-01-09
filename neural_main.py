@@ -5,14 +5,15 @@ from config import CURRENT_TRANSPORT_NUMBER, CURRENT_DAY, CURRENT_TIME
 
 
 # Used as a placeholder if selected transport number has no data.
+FULLNESS_TEMPLATE: list = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 DATA_TEMPLATE: dict = {
-    'понедельник': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'вторник': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'среда': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'четверг': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'пятница': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'суббота': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    'воскресенье': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    'понедельник': FULLNESS_TEMPLATE,
+    'вторник': FULLNESS_TEMPLATE,
+    'среда': FULLNESS_TEMPLATE,
+    'четверг': FULLNESS_TEMPLATE,
+    'пятница': FULLNESS_TEMPLATE,
+    'суббота': FULLNESS_TEMPLATE,
+    'воскресенье': FULLNESS_TEMPLATE
 }
 
 
@@ -56,12 +57,10 @@ def write_to_json(data):
     current_time_index = TIME_TO_INDEX[CURRENT_TIME]
 
     if CURRENT_TRANSPORT_NUMBER in json_data:
-        json_data[CURRENT_TRANSPORT_NUMBER][CURRENT_DAY][current_time_index] \
-            = data
+        json_data[CURRENT_TRANSPORT_NUMBER][CURRENT_DAY][current_time_index] = data
     else:
         json_data[CURRENT_TRANSPORT_NUMBER] = DATA_TEMPLATE
-        json_data[CURRENT_TRANSPORT_NUMBER][CURRENT_DAY][current_time_index] \
-            = data
+        json_data[CURRENT_TRANSPORT_NUMBER][CURRENT_DAY][current_time_index] = data
 
     with open("static/site/transport_data/transport_load_data.json", "w",
               encoding='utf-8') as outfile:
