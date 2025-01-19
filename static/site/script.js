@@ -11,6 +11,8 @@ DG.then(function () {
     const openLoadPanelIcons = document.querySelectorAll('#open-load-panel');
     const backToScheduleBtn = document.getElementById('back-to-schedule-btn');
     const showTransportRoute37Btn = document.getElementById('show-transport-route-37');
+    const showTransportRoute50Btn = document.getElementById('show-transport-route-50');
+    const showTransportRoute58Btn = document.getElementById('show-transport-route-58');
     const weekDays = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     const dayButtons = document.querySelectorAll('.day-btn');
 
@@ -62,9 +64,21 @@ DG.then(function () {
         schedulePanel.style.display = 'none';
     }
 
+    showTransportRoute50Btn.addEventListener('click', () => {
+        showTransportRoute("50");
+    });
+
+    showTransportRoute58Btn.addEventListener('click', () => {
+        showTransportRoute("58");
+    });
     // Fetch and display route 37 data on the map.
     showTransportRoute37Btn.addEventListener('click', () => {
-        fetch('/static/site/transport_data/37.json')
+        showTransportRoute("37")
+        getTrolleybusRoute37()
+    });
+    
+    function showTransportRoute(route) {
+        fetch('/static/site/transport_data/route_data.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load data: ${response.status}`);
@@ -72,16 +86,16 @@ DG.then(function () {
                 return response.json();
             })
             .then(data => {
-                const routeGeometry = data.route_geometry;
-                const platforms = data.platforms;
-                const platformNames = data.platform_names;
+                const routeGeometry = data[route].route_geometry;
+                const platforms = data[route].platforms;
+                const platformNames = data[route].platform_names;
 
                 clearMap();
                 displayRouteOnMap(routeGeometry);
                 placeStopsOnMap(platforms, platformNames);
             })
             .catch(error => console.error('Data processing error:', error));
-    });
+    }
 
     // Render transport routes on the map.
     function displayRouteOnMap(geometryList) {
@@ -106,7 +120,6 @@ DG.then(function () {
         });
     }
 
-    // Render transport stops on the map.
     function placeStopsOnMap(platforms, platformNames) {
         const stopIcon = DG.icon({
             iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -114,16 +127,26 @@ DG.then(function () {
             iconAnchor: [15, 30],
             popupAnchor: [0, 0]
         });
-
-        platforms.forEach((platform, index) => {
+    
+        // Создаем объект для быстрого поиска названий по id
+        const platformNameMap = {};
+        platformNames.forEach((name, index) => {
+            platformNameMap[platforms[index]?.id] = name;
+        });
+    
+        // Расставляем маркеры
+        platforms.forEach(platform => {
             const [lon, lat] = platform.geometry.replace("POINT(", "").replace(")", "").split(" ");
+            const name = platformNameMap[platform.id] || 'Unnamed Stop';
+    
             DG.marker([parseFloat(lat), parseFloat(lon)], { icon: stopIcon })
                 .addTo(map)
                 .bindPopup(`<div style="font-size: 14px; font-weight: bold; text-align: center;">
-                    ${platformNames[index] || 'Unnamed Stop'}
+                    ${name}
                 </div>`);
         });
     }
+    
 
     // Remove all layers from the map.
     function clearMap() {
@@ -136,17 +159,14 @@ DG.then(function () {
 });
 
 /*
-    // Trolleybus route request
-    showTransportRoute37Btn.addEventListener('click', () => getTrolleybusRoute37());
-
     function getTrolleybusRoute37() {
-        const apiUrl = `https://routing.api.2gis.com/public_transport/2.0?key=e9a6a37b-245a-4ad2-918e-c4b9cb8ce618`;
+        const apiUrl = `https://routing.api.2gis.com/public_transport/2.0?key=cc03e0e8-6181-4dcc-a681-f53b0128eb78`;
 
         const requestBody = {
             "locale": "ru",
-            "source": { "name": "Площадь 1905 года", "point": { "lat": 56.820856, "lon": 60.575156 } },
-            "target": { "name": "ТРЦ Гринвич", "point": { "lat": 56.831789, "lon": 60.656212 } },
-            "transport": ["trolleybus"]
+            "source": { "name": "Площадь 1905 года", "point": { "lat": 56.739572, "lon": 60.544153 } }, 
+            "target": { "name": "ТРЦ Гринвич", "point": { "lat": 56.866511, "lon": 60.643215 } },
+            "transport": ["bus"]
         };
 
         console.log("Отправляем запрос с телом:", JSON.stringify(requestBody));
@@ -168,7 +188,7 @@ DG.then(function () {
             const route37 = data.find(route =>
                 route.movements.some(movement =>
                     movement.routes &&
-                    movement.routes.some(r => r.names.includes("37"))
+                    movement.routes.some(r => r.names.includes("58"))
                 )
             );
 
@@ -183,4 +203,5 @@ DG.then(function () {
         })
         .catch(error => console.error("Ошибка при получении маршрута:", error));
     }
+
         */
