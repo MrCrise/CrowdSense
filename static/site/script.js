@@ -44,7 +44,6 @@ DG.then(function () {
                     console.warn(`Data not found for transport ${currentTransportNumber} on ${day}`);
                     const bars = document.querySelectorAll('.bar');
                      bars.forEach(bar => { bar.style.height = '0%'; bar.title = '0%'; }); // Clear the chart
-                    dayDisplay.textContent = `${currentTransportNumber}`;
                     return;
                 }
 
@@ -54,7 +53,6 @@ DG.then(function () {
                     bar.style.height = `${load_data[index]}%`;
                     bar.title = `${load_data[index]}%`;
                 });
-                dayDisplay.textContent = `${currentTransportNumber}`;
             })
             .catch(error => {
                 console.error('Data processing error:', error)
