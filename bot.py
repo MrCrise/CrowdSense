@@ -27,7 +27,7 @@ async def command_start_handler(message: Message) -> None:
             [
                 KeyboardButton(
                     text="Открыть приложение",
-                    web_app=WebAppInfo(url="https://mrcrise.github.io/")
+                    web_app=WebAppInfo(url="https://ksaidy.pythonanywhere.com/")
                 )
             ]
         ],
