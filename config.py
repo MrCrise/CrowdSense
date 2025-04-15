@@ -1,4 +1,4 @@
-BOT_TOKEN: str = "8151127954:AAFPMLTgJ20VK-ulxXb3MBzz9H1WyoGxiDA"
+BOT_TOKEN: str = "BOT_TOKEN"
 
 CURRENT_TRANSPORT_NUMBER: str = '37'
 CURRENT_DAY: str = 'понедельник'  # понедельник, вторник, среда, четверг, пятница, суббота, воскресенье.
